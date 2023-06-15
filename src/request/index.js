@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { Toast } from "vant";
+import { Toast, Dialog } from "vant";
 
 const request = axios.create({
   // baseURL: '/api',
@@ -41,10 +41,9 @@ request.interceptors.request.use(config => {
 request.interceptors.response.use(response => {
     endLoading();
     if(response.data.code !== 200){
-      Toast.loading({
+      Dialog.alert({
+        title: "错误",
         message: response.data.message,
-        forbidClick: true,
-        duration: 0,
       });
     }
     return response

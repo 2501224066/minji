@@ -429,7 +429,7 @@ export default {
           }
 
           let obj = {
-            report_id: this.$route.query.id || 1,
+            report_id: this.$route.query.report_id || 1,
             breast_result: this.breast_result,
             breast_left_num: this.breast_left_num,
             breast_left_position: this.breast_left_position,
@@ -548,6 +548,7 @@ export default {
 }
 
 .name_input_x {
+  width: 100%;
   font-size: 0.3467rem;
   color: #7e7e7e;
   border: none;

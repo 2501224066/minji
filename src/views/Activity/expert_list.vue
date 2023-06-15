@@ -4,7 +4,7 @@
     <div v-else>
       <div class="card" v-for="(item, index) in list" :key="index">
         <div class="user_name">
-          <span class="labe">{{ item.user_name }} ({{ { "1": "男", "2": "女" }[item.sex] }} {{ item.age }})</span>
+          <span class="labe">{{ item.user_name }} ({{ item.sex }} {{ item.age }})</span>
           <span class="labe" style="text-align: right; color: #999">{{ item.created_at }}</span>
         </div>
         <div class="user_name">
@@ -43,14 +43,14 @@ export default {
     },
 
     op(item) {
-      if(item.report_status === 1){
-        this.$router.push('/color_set?report_id=' + item.id)
-      }else if(item.report_status === 2) {
-        this.$router.push('/expert_set?report_id=' + item.id)
-      }else {
-        this.$router.push('/expert_show?report_id=' + item.id)
+      if (item.report_status === 1) {
+        this.$router.push("/color_set?report_id=" + item.id);
+      } else if (item.report_status === 2) {
+        this.$router.push("/expert_set?report_id=" + item.id);
+      } else {
+        this.$router.push("/expert_show?report_id=" + item.id);
       }
-    } 
+    },
   },
 };
 </script>
@@ -133,6 +133,7 @@ export default {
 }
 
 .name_input_x {
+  width: 100%;
   font-size: 0.3467rem;
   color: #7e7e7e;
   border: none;

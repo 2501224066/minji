@@ -130,6 +130,7 @@ export default {
 }
 
 .name_input_x {
+  width: 100%;
   font-size: 0.3467rem;
   color: #7e7e7e;
   border: none;
