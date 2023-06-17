@@ -150,7 +150,7 @@
         </div>
 
         <div
-          v-if="info.thyroid_result_position === '左侧页' || info.thyroid_result_position === '双侧页结节'"
+          v-if="info.thyroid_result_position === '左侧叶' || info.thyroid_result_position === '双侧叶结节'"
           class="card"
         >
           <div class="user_card">
@@ -175,7 +175,7 @@
           </div>
         </div>
         <div
-          v-if="info.thyroid_result_position === '右侧页' || info.thyroid_result_position === '双侧页结节'"
+          v-if="info.thyroid_result_position === '右侧叶' || info.thyroid_result_position === '双侧叶结节'"
           class="card"
         >
           <div class="user_card">
@@ -218,7 +218,7 @@
           </van-radio-group>
         </div>
         <div class="card" v-if="rxjy === 5" style="padding: 0.1rem; box-sizing: border-box">
-          <textarea type="text" rows="3" v-model="rxjy1" placeholder="请填写其他建议" class="name_input" />
+          <textarea type="text" rows="5" v-model="rxjy1" placeholder="请填写其他建议" class="name_input" />
         </div>
       </div>
       <div class="card">
@@ -233,7 +233,7 @@
           </van-radio-group>
         </div>
         <div class="card" v-if="jzxjy === 5" style="padding: 0.1rem; box-sizing: border-box">
-          <textarea type="text" rows="3" v-model="jzxjy1" placeholder="请填写其他建议" class="name_input" />
+          <textarea type="text" rows="5" v-model="jzxjy1" placeholder="请填写其他建议" class="name_input" />
         </div>
       </div>
 

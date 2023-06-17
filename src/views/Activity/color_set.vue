@@ -105,7 +105,7 @@
             <span class="labe">较大者</span>
             <input type="number" v-model="rxl2" class="name_input_x" style="width: 1rem; text-align: center" />mmX
             <input type="number" v-model="rxl3" class="name_input_x" style="width: 1rem; text-align: center" />mmX
-            <input type="number" v-model="rxl4" class="name_input_x" style="width: 1rem; text-align: center" />mmX
+            <input type="number" v-model="rxl4" class="name_input_x" style="width: 1rem; text-align: center" />mm
           </div>
           <div class="user_card">
             <span class="labe">位置</span>
@@ -144,7 +144,7 @@
             <span class="labe">较大者</span>
             <input type="number" v-model="rxr2" class="name_input_x" style="width: 1rem; text-align: center" />mmX
             <input type="number" v-model="rxr3" class="name_input_x" style="width: 1rem; text-align: center" />mmX
-            <input type="number" v-model="rxr4" class="name_input_x" style="width: 1rem; text-align: center" />mmX
+            <input type="number" v-model="rxr4" class="name_input_x" style="width: 1rem; text-align: center" />mm
           </div>
           <div class="user_card">
             <span class="labe">位置</span>
@@ -186,13 +186,13 @@
         <div class="user_card" v-if="thyroid_result === '弥漫性病变甲亢' || thyroid_result === '弥漫性病变甲状腺炎'">
           <span class="labe">位置</span>
           <van-radio-group v-model="thyroid_result_position">
-            <van-radio icon-size="0.5rem" name="左侧页">左侧页</van-radio>
-            <van-radio icon-size="0.5rem" name="右侧页">右侧页</van-radio>
-            <van-radio icon-size="0.5rem" name="双侧页结节">双侧页结节</van-radio>
+            <van-radio icon-size="0.5rem" name="左侧叶">左侧叶</van-radio>
+            <van-radio icon-size="0.5rem" name="右侧叶">右侧叶</van-radio>
+            <van-radio icon-size="0.5rem" name="双侧叶结节">双侧叶结节</van-radio>
           </van-radio-group>
         </div>
 
-        <div v-if="thyroid_result_position === '左侧页' || thyroid_result_position === '双侧页结节'" class="card">
+        <div v-if="thyroid_result_position === '左侧叶' || thyroid_result_position === '双侧叶结节'" class="card">
           <div class="user_card">
             <span class="labe">左侧</span>
             <van-radio-group v-model="thyroid_left_num" direction="horizontal">
@@ -204,7 +204,7 @@
             <span class="labe">较大者</span>
             <input type="number" v-model="jzxl2" class="name_input_x" style="width: 1rem; text-align: center" />mmX
             <input type="number" v-model="jzxl3" class="name_input_x" style="width: 1rem; text-align: center" />mmX
-            <input type="number" v-model="jzxl4" class="name_input_x" style="width: 1rem; text-align: center" />mmX
+            <input type="number" v-model="jzxl4" class="name_input_x" style="width: 1rem; text-align: center" />mm
           </div>
           <div class="user_card">
             <span class="labe">位置</span>
@@ -231,7 +231,7 @@
             </van-radio-group>
           </div>
         </div>
-        <div v-if="thyroid_result_position === '右侧页' || thyroid_result_position === '双侧页结节'" class="card">
+        <div v-if="thyroid_result_position === '右侧叶' || thyroid_result_position === '双侧叶结节'" class="card">
           <div class="user_card">
             <span class="labe">右侧</span>
             <van-radio-group v-model="thyroid_right_num" direction="horizontal">
@@ -243,7 +243,7 @@
             <span class="labe">较大者</span>
             <input type="number" v-model="jzxr2" class="name_input_x" style="width: 1rem; text-align: center" />mmX
             <input type="number" v-model="jzxr3" class="name_input_x" style="width: 1rem; text-align: center" />mmX
-            <input type="number" v-model="jzxr4" class="name_input_x" style="width: 1rem; text-align: center" />mmX
+            <input type="number" v-model="jzxr4" class="name_input_x" style="width: 1rem; text-align: center" />mm
           </div>
           <div class="user_card">
             <span class="labe">位置</span>
@@ -399,7 +399,7 @@ export default {
             this.$toast("甲状腺彩超结果未选择");
             return;
           } else if (this.thyroid_result === "弥漫性病变甲亢" || this.thyroid_result === "弥漫性病变甲状腺炎") {
-            if (this.thyroid_result_position === "左侧页" || this.thyroid_result_position === "双侧页结节") {
+            if (this.thyroid_result_position === "左侧叶" || this.thyroid_result_position === "双侧叶结节") {
               if (
                 this.thyroid_left_num === null ||
                 this.thyroid_left_position === null ||
@@ -412,7 +412,7 @@ export default {
                 this.$toast("甲状腺彩超结果左侧未填写完整");
                 return;
               }
-            } else if (this.thyroid_result_position === "右侧页" || this.thyroid_result_position === "双侧页结节") {
+            } else if (this.thyroid_result_position === "右侧叶" || this.thyroid_result_position === "双侧叶结节") {
               if (
                 this.thyroid_right_num === null ||
                 this.thyroid_right_position === null ||
@@ -449,10 +449,10 @@ export default {
             thyroid_right_position: this.thyroid_right_position,
             thyroid_right_cystic: this.thyroid_right_cystic,
             thyroid_right_level: this.thyroid_right_level,
-            breast_left_larger: `${this.rxl2}mmX${this.rxl3}mmX${this.rxl4}mmX`,
-            breast_right_larger: `${this.rxr2}mmX${this.rxr3}mmX${this.rxr4}mmX`,
-            thyroid_left_larger: `${this.jzxl2}mmX${this.jzxl3}mmX${this.jzxl4}mmX`,
-            thyroid_right_larger: `${this.jzxr2}mmX${this.jzxr3}mmX${this.jzxr4}mmX`,
+            breast_left_larger: `${this.rxl2}mmX${this.rxl3}mmX${this.rxl4}mm`,
+            breast_right_larger: `${this.rxr2}mmX${this.rxr3}mmX${this.rxr4}mm`,
+            thyroid_left_larger: `${this.jzxl2}mmX${this.jzxl3}mmX${this.jzxl4}mm`,
+            thyroid_right_larger: `${this.jzxr2}mmX${this.jzxr3}mmX${this.jzxr4}mm`,
             audit_sign: img,
           };
 

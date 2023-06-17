@@ -141,7 +141,7 @@
 
     <div class="user_card">
       <span class="labe">现病史</span>
-      <textarea type="text" rows="3" v-model="xbs" placeholder="请填写现病史" class="name_input" />
+      <textarea type="text" rows="5" v-model="xbs" placeholder="请填写现病史" class="name_input" />
     </div>
 
     <div class="add_btn">
@@ -208,7 +208,7 @@ export default {
   methods: {
     async getDetail() {
       const res = await report_my({ params: { active_id: this.$route.query.active_id || 1 } });
-      if (res.data.data) this.$router.push("/activity_show");
+      if (res.data.data) this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
     },
 
     async getInfo() {
@@ -302,11 +302,11 @@ export default {
           sex: this.sex,
           tel: this.tel,
           compony: this.compony,
-          breast: this.zl1 !== '无' ? this.zl11 : this.zl1,
-          thyroid: this.zl2 !== '无' ? this.zl22 : this.zl2,
-          hormone: this.zl3 !== '无' ? this.zl33 : this.zl3,
-          breast_cancer: this.jz1 !== '无' ? this.jz11 : this.jz1,
-          thyroid_cancer: this.jz2 !== '无' ? this.jz22 : this.jz2,
+          breast: this.zl1 !== "无" ? this.zl11 : this.zl1,
+          thyroid: this.zl2 !== "无" ? this.zl22 : this.zl2,
+          hormone: this.zl3 !== "无" ? this.zl33 : this.zl3,
+          breast_cancer: this.jz1 !== "无" ? this.jz11 : this.jz1,
+          thyroid_cancer: this.jz2 !== "无" ? this.jz22 : this.jz2,
           id_card: this.id_card,
           address: this.address,
           occu: this.occu,

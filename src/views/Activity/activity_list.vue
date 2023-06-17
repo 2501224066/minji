@@ -4,7 +4,15 @@
     <div v-else>
       <div class="card" v-for="(item, index) in list" :key="index">
         <div class="user_name">
-          <span class="labe">{{ item.user_name }} ({{ { "1": "男", "2": "女" }[item.sex] }} {{ item.age }})</span>
+          <span class="labe" style="display: flex">
+            <van-checkbox
+              @change="count()"
+              shape
+              v-model="item.checked"
+              :disabled="item.status_name !== '待审核'"
+            ></van-checkbox>
+            &nbsp; &nbsp; &nbsp;{{ item.user_name }} ({{ item.sex }} {{ item.age }})
+          </span>
           <span class="labe" style="text-align: right; color: #999">{{ item.created_at }}</span>
         </div>
         <div class="user_name">
@@ -16,6 +24,14 @@
           <van-button round @click="audit(item.id, 2)" style="margin-right: 0.2rem">拒绝</van-button>
           <van-button round type="info" @click="audit(item.id, 1)">通过</van-button>
         </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>已选中{{ checkoutList.length }}个</span>
+      <div>
+        <van-button round @click="botch(2)" style="margin-right: 0.2rem; width: 3rem">批量拒绝</van-button>
+        <van-button round type="info" @click="botch(1)" style="width: 3rem">批量审核</van-button>
       </div>
     </div>
   </div>
@@ -30,6 +46,7 @@ export default {
   data() {
     return {
       list: {},
+      checkoutList: [],
     };
   },
   created() {
@@ -38,12 +55,36 @@ export default {
   methods: {
     async getList() {
       const res = await report_lists({ params: { active_id: this.$route.query.active_id || 1 } });
+      if (res.data.data.length) {
+        res.data.data.forEach((element) => {
+          element.checked = false;
+        });
+      }
       this.list = res.data.data;
     },
 
     async audit(id, type) {
       await report_audit({
         report_id: id,
+        report_option: type,
+      });
+      await this.getList();
+    },
+
+    count() {
+      this.checkoutList = this.list.reduce((init, val) => {
+        if (val.checked) init.push(val.id);
+        return init;
+      }, []);
+    },
+
+    async botch(type) {
+      if (!this.checkoutList.length) {
+        this.$toast("未选择数据");
+        return;
+      }
+      await report_audit({
+        report_id: this.checkoutList.join(),
         report_option: type,
       });
       await this.getList();
@@ -116,6 +157,10 @@ export default {
   justify-content: space-between;
 }
 
+.user_name > div {
+  max-width: 33%;
+}
+
 .labe {
   font-size: 0.3733rem;
   font-weight: 600;
@@ -155,6 +200,20 @@ export default {
   justify-content: center;
   padding-top: 1.6rem;
   background: #fff;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  background: #fff;
+  padding: 0.2rem 0.2rem 0.5rem 0.2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /deep/.van-button {

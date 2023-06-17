@@ -4,15 +4,16 @@
     <div v-else>
       <div class="card" v-for="(item, index) in list" :key="index">
         <div class="user_name">
-          <span class="labe">{{ item.user_name }} ({{ item.sex }} {{ item.age }})</span>
-          <span class="labe" style="text-align: right; color: #999">{{ item.created_at }}</span>
+          <div class="labe">{{ item.user_name }} ({{ item.sex }} {{ item.age }})</div>
+          <div class="labe" style="text-align: right; color: #999">{{ item.created_at }}</div>
         </div>
         <div class="user_name">
-          <span class="labe">{{ item.tel }} </span>
-          <span class="labe">{{ item.compony }}</span>
-          <span class="labe" style="color: green; text-align: right">{{ item.report_status_name }}</span>
+          <div class="labe">{{ item.tel }} </div>
+          <div class="labe">{{ item.compony }}</div>
+          <div class="labe" style="color: green; text-align: right">{{ item.report_status_name }}</div>
         </div>
-        <div style="color: green; text-align: right; padding: 0.1rem">
+        <div style="color: #666; display: flex; justify-content: space-between; align-items: center; padding: 0.2rem">
+          <div>{{ item.title }}</div>
           <van-button round type="info" @click="op(item)">{{
             { 1: "填写彩超", 2: "填写建议", 3: "查看详情" }[item.report_status]
           }}</van-button>
@@ -117,6 +118,10 @@ export default {
   background: #fff;
   border: 0.0267rem solid #eff4f5;
   justify-content: space-between;
+}
+
+.user_name>div{
+  max-width: 33%;
 }
 
 .labe {
