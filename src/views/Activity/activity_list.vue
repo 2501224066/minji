@@ -55,6 +55,16 @@ export default {
   methods: {
     async getList() {
       const res = await report_lists({ params: { active_id: this.$route.query.active_id || 1 } });
+      if(res.data.data === 999){
+        this.$toast.loading({
+          message: "无审核权限",
+          forbidClick: true,
+          duration: 0,
+        });
+        setTimeout(()=>{
+          this.$router.push('/index')
+        }, 1000)   
+      }
       if (res.data.data.length) {
         res.data.data.forEach((element) => {
           element.checked = false;

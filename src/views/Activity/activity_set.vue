@@ -168,6 +168,7 @@
 
 <script>
 import { activity_set, report_my, get_info } from "@/Api/activity/index";
+import { Toast } from 'vant';
 
 export default {
   props: {},
@@ -201,14 +202,39 @@ export default {
       status: {},
     };
   },
-  created() {
-    this.getDetail();
-    this.getInfo();
+  async created() {
+    await this.getInfo();
+    await this.getDetail();
   },
   methods: {
     async getDetail() {
       const res = await report_my({ params: { active_id: this.$route.query.active_id || 1 } });
-      if (res.data.data) this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
+      if (res.data.data.active_status === 0) {
+        Toast.fail({
+          message: "活动未开始",
+          forbidClick: true,
+          duration: 0,
+        });
+        return
+      }
+      if (res.data.data.active_status === 2) {
+        Toast.fail({
+          message: "活动已结束",
+          forbidClick: true,
+          duration: 0,
+        });
+        return
+      }
+      if (res.data.data.active_limit_status === 1) {
+        Toast.fail({
+          message: "活动参与人数达到上限",
+          forbidClick: true,
+          duration: 0,
+        });
+        return
+      }
+      if (res.data.data && res.data.data.id)
+        this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
     },
 
     async getInfo() {

@@ -29,7 +29,6 @@
         <van-cell :icon="require('@/assets/img/48.png')" title="医生订单" is-link value to="/doctor_order" />
         <van-cell :icon="require('@/assets/img/47.png')" title="添加卡包" is-link value to="/add_card" />
         <van-cell
-          v-if="isExpire"
           :icon="require('@/assets/img/48.png')"
           title="报告查询"
           is-link
@@ -58,12 +57,10 @@ export default {
   data() {
     return {
       info: {},
-      isExpire: false,
     };
   },
   created() {
     this.get_info();
-    this.getIsExpire();
     if (this.$router.history.current.fullPath == "/main") {
       this.$store.commit("changeActive", 3);
     }
@@ -80,12 +77,6 @@ export default {
       }
       this.info = res.data;
       console.log(res);
-    },
-
-    async getIsExpire() {
-      let res = await is_expire();
-      this.isExpire = res.data.data.is_expire;
-      console.log(res.data)
     },
   },
 };

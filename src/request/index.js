@@ -12,7 +12,7 @@ const request = axios.create({
 let loading;
 
 function startLoading() {
-  loading = Toast.loading({
+  loading = Toast.fail({
     message: "加载中...",
     forbidClick: true,
     duration: 0,
