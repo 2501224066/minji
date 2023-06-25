@@ -168,7 +168,7 @@
 
 <script>
 import { activity_set, report_my, get_info } from "@/Api/activity/index";
-import { Toast } from 'vant';
+import { Toast } from "vant";
 
 export default {
   props: {},
@@ -215,7 +215,7 @@ export default {
           forbidClick: true,
           duration: 0,
         });
-        return
+        return;
       }
       if (res.data.data.active_status === 2) {
         Toast.fail({
@@ -223,7 +223,11 @@ export default {
           forbidClick: true,
           duration: 0,
         });
-        return
+        return;
+      }
+      if (res.data.data && res.data.data.id) {
+        this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
+        return;
       }
       if (res.data.data.active_limit_status === 1) {
         Toast.fail({
@@ -231,10 +235,8 @@ export default {
           forbidClick: true,
           duration: 0,
         });
-        return
+        return;
       }
-      if (res.data.data && res.data.data.id)
-        this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
     },
 
     async getInfo() {
@@ -281,17 +283,26 @@ export default {
       } else if (this.tel === "") {
         this.$toast("请填写手机号");
         return;
+      } else if (/^\d{11}$/.test(this.tel) === false) {
+        this.$toast("手机号不符合规范");
+        return;
       } else if (this.sex === "") {
         this.$toast("请选择性别");
         return;
       } else if (this.age === "") {
         this.$toast("请填写年龄");
         return;
+      } else if (/^\d{2}$/.test(this.age) === false) {
+        this.$toast("年龄不符合规范");
+        return;
       } else if (this.compony === "") {
         this.$toast("请填写公司名称");
         return;
       } else if (this.status.id_card_status === 1 && this.id_card === "") {
         this.$toast("请填写身份证号");
+        return;
+      } else if (this.status.id_card_status === 1 && /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.id_card) === false) {
+        this.$toast("身份证号不符合规范");
         return;
       } else if (this.status.occu_status === 1 && this.occu === "") {
         this.$toast("请填写职业");
@@ -309,12 +320,7 @@ export default {
       ) {
         this.$toast("请完整填写既往史");
         return;
-      } else if (
-        this.jz1 === "" ||
-        (this.jz1 === 4 && this.jz11 === "") ||
-        this.jz2 === "" ||
-        (this.jz2 === 4 && this.jz22 === "")
-      ) {
+      } else if (this.jz1 === "" || (this.jz1 === 4 && this.jz11 === "") || this.jz2 === "" || (this.jz2 === 4 && this.jz22 === "")) {
         this.$toast("请完整填写家族史");
         return;
       } else if (this.xbs === "") {

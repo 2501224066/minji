@@ -405,6 +405,7 @@ export default {
   color: #7e7e7e;
   border: none;
   background: #fff;
+  width: 100%;
 }
 
 .name_input_x {

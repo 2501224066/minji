@@ -449,10 +449,10 @@ export default {
             thyroid_right_position: this.thyroid_right_position,
             thyroid_right_cystic: this.thyroid_right_cystic,
             thyroid_right_level: this.thyroid_right_level,
-            breast_left_larger: `${this.rxl2}mmX${this.rxl3}mmX${this.rxl4}mm`,
-            breast_right_larger: `${this.rxr2}mmX${this.rxr3}mmX${this.rxr4}mm`,
-            thyroid_left_larger: `${this.jzxl2}mmX${this.jzxl3}mmX${this.jzxl4}mm`,
-            thyroid_right_larger: `${this.jzxr2}mmX${this.jzxr3}mmX${this.jzxr4}mm`,
+            breast_left_larger: `${this.rxl2 || 0}mmX${this.rxl3 || 0}mmX${this.rxl4 || 0}mm`,
+            breast_right_larger: `${this.rxr2 || 0}mmX${this.rxr3 || 0}mmX${this.rxr4 || 0}mm`,
+            thyroid_left_larger: `${this.jzxl2 || 0}mmX${this.jzxl3 || 0}mmX${this.jzxl4 || 0}mm`,
+            thyroid_right_larger: `${this.jzxr2 || 0}mmX${this.jzxr3 || 0}mmX${this.jzxr4 || 0}mm`,
             audit_sign: img,
           };
 
@@ -546,6 +546,7 @@ export default {
   color: #7e7e7e;
   border: none;
   background: #fff;
+  width: 100%;
 }
 
 .name_input_x {
