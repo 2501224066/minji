@@ -40,3 +40,6 @@ export const is_expire = function (data) {
   return request.post('/api/report/is_expire', data)
 }
 
+export const active_list = function (data) {
+  return request.post('/api/report/active_list', data)
+}

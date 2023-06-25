@@ -2,13 +2,22 @@
   <div class="add_card">
     <div v-if="!list.length" style="text-align: center; padding: 2rem 0">暂无可操作活动请求</div>
     <div v-else>
+      <div style="display: flex; align-items: center; padding: 0 2%; background: #fff">
+        <div style="width: 30%; text-align: right">选择活动：</div>
+        <div style="flex: 1">
+          <van-dropdown-menu>
+            <van-dropdown-item @change="getList()" v-model="id" :options="activeList"> </van-dropdown-item>
+          </van-dropdown-menu>
+        </div>
+      </div>
+
       <div class="card" v-for="(item, index) in list" :key="index">
         <div class="user_name">
           <div class="labe">{{ item.user_name }} ({{ item.sex }} {{ item.age }})</div>
           <div class="labe" style="text-align: right; color: #999">{{ item.created_at }}</div>
         </div>
         <div class="user_name">
-          <div class="labe">{{ item.tel }} </div>
+          <div class="labe">{{ item.tel }}</div>
           <div class="labe">{{ item.compony }}</div>
           <div class="labe" style="color: green; text-align: right">{{ item.report_status_name }}</div>
         </div>
@@ -24,7 +33,7 @@
 </template>
 
 <script>
-import { get_expier_list } from "@/Api/activity/index";
+import { get_expier_list, active_list } from "@/Api/activity/index";
 
 export default {
   props: {},
@@ -32,15 +41,30 @@ export default {
   data() {
     return {
       list: {},
+      id: null,
+      activeList: [],
     };
   },
   created() {
-    this.getList();
+    this.getActiveList();
   },
   methods: {
     async getList() {
-      const res = await get_expier_list();
+      const res = await get_expier_list({ active_id: this.id });
       this.list = res.data.data;
+    },
+
+    async getActiveList() {
+      const res = await active_list();
+      this.id = res.data.data[0].id;
+      this.activeList = res.data.data.reduce((init, val) => {
+        init.push({
+          text: val.title,
+          value: val.id,
+        });
+        return init;
+      }, []);
+      this.getList();
     },
 
     op(item) {
@@ -120,7 +144,7 @@ export default {
   justify-content: space-between;
 }
 
-.user_name>div{
+.user_name > div {
   max-width: 33%;
 }
 

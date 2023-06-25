@@ -209,6 +209,10 @@ export default {
   methods: {
     async getDetail() {
       const res = await report_my({ params: { active_id: this.$route.query.active_id || 1 } });
+      if (res.data.data && res.data.data.id) {
+        this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
+        return;
+      }
       if (res.data.data.active_status === 0) {
         Toast.fail({
           message: "活动未开始",
@@ -223,10 +227,6 @@ export default {
           forbidClick: true,
           duration: 0,
         });
-        return;
-      }
-      if (res.data.data && res.data.data.id) {
-        this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
         return;
       }
       if (res.data.data.active_limit_status === 1) {
