@@ -74,7 +74,10 @@
       </div>
     </div>
 
-    <div style="text-align: center; margin: 1rem 0" v-if="detail.active_status === 1 && detail.active_limit_status !== 1">
+    <div
+      style="text-align: center; margin: 1rem 0"
+      v-if="detail.active_status === 1 && detail.active_limit_status !== 1"
+    >
       <img v-if="detail.result_status !== 2" :src="detail.base64_img" style="width: 5rem; height: 5rem" />
       <div v-if="detail.result_status === 0">请将二维码给彩超老师填写结果</div>
       <div v-if="detail.result_status === 1">请将二维码给专家填写建议</div>
@@ -82,6 +85,12 @@
       <van-button v-if="detail.result_status !== 2" round type="info" @click="getDetail" style="margin: 0.5rem 0">
         刷新
       </van-button>
+    </div>
+
+    <div v-else style="text-align: center; margin: 1rem 0" >
+      <div v-if="detail.active_status === 0">活动未开始</div>
+      <div v-if="detail.active_status === 2">活动已结束</div>
+      <div v-if="detail.active_limit_status === 1">活动参与人数达到上限</div>
     </div>
   </div>
 </template>

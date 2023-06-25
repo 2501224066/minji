@@ -1,6 +1,6 @@
 <template>
   <div class="add_card">
-    <div v-if="!list.length" style="text-align: center; padding: 2rem 0">暂无可操作活动请求</div>
+    <div v-if="!activeList.length" style="text-align: center; padding: 2rem 0">暂无可操作活动请求</div>
     <div v-else>
       <div style="display: flex; align-items: center; padding: 0 2%; background: #fff">
         <div style="width: 30%; text-align: right">选择活动：</div>
