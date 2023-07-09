@@ -10,11 +10,13 @@
         <span>{{ nnickname }}</span>
       </div>
 
+      <!--
       <van-cell title="生日" is-link :value="birthday_data" @click="birthday" />
+      -->
 
       <div class="user_header">
         <span>手机号</span>
-        <!-- <span>{{ '15018038896' | filterTel }}</span> -->
+        <span>{{ mobile }}</span> 
       </div>
     </div>
 
@@ -50,6 +52,7 @@ export default {
       birthday_data: "",
       head_img_url: "",
       nnickname: "",
+      mobile: ""
     };
   },
   created() {
@@ -94,6 +97,8 @@ export default {
       }
       this.head_img_url = res.data.head_img_url;
       this.nnickname = res.data.nnickname;
+      this.mobile = res.data.mobile;
+      this.birthday_data = res.data.birthday;
       console.log(res);
     },
 

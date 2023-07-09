@@ -176,7 +176,14 @@
       <div class="card">
         <div class="user_card">
           <span class="labe">甲状腺彩超结果</span>
-          <van-radio-group v-model="thyroid_result">
+          <van-radio-group
+            v-model="thyroid_result"
+            @change="
+              () => {
+                thyroid_result_position = '';
+              }
+            "
+          >
             <van-radio icon-size="0.5rem" name="正常">正常</van-radio>
             <van-radio icon-size="0.5rem" name="弥漫性病变甲亢">弥漫性病变甲亢</van-radio>
             <van-radio icon-size="0.5rem" name="弥漫性病变甲状腺炎">弥漫性病变甲状腺炎</van-radio>

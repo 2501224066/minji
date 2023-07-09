@@ -308,7 +308,7 @@ export default {
       if (this.isrequest) {
         return;
       }
-      if (this.page >= this.pages) {
+      if (this.page*10 >= this.total) {
         this.finished = true;
         return;
       }

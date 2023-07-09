@@ -21,7 +21,7 @@
           <img src="@/assets/img/4.png" alt @click="more_doctor" />
         </div>
         <div class="nav_item">
-          <img src="@/assets/img/5.png" alt @click="go_psychology" />
+          <img src="@/assets/img/65.png" alt @click="go_psychology" />
         </div>
         <div class="nav_item">
           <img src="@/assets/img/3.png" alt @click="go_shop" />
@@ -294,7 +294,7 @@ export default {
     },
 
     go_psychology() {
-      this.$router.push("/psychology");
+      this.$router.push("/health_list");
     },
 
     // 文章详情

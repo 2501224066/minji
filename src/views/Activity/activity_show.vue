@@ -74,23 +74,26 @@
       </div>
     </div>
 
-    <div
-      style="text-align: center; margin: 1rem 0"
-      v-if="detail.active_status === 1"
-    >
-      <img v-if="detail.result_status !== 2" :src="detail.base64_img" style="width: 5rem; height: 5rem" />
-      <div v-if="detail.result_status === 0">请将二维码给彩超老师填写结果</div>
-      <div v-if="detail.result_status === 1">请将二维码给专家填写建议</div>
-      <div v-if="detail.result_status === 2">报告已完成，请联系业务经理打印</div>
-      <van-button v-if="detail.result_status !== 2" round type="info" @click="getDetail" style="margin: 0.5rem 0">
-        刷新
-      </van-button>
+    <div v-if="detail.status !== 0">
+      <div style="text-align: center; margin: 1rem 0" v-if="detail.active_status === 1">
+        <img v-if="detail.result_status !== 2" :src="detail.base64_img" style="width: 5rem; height: 5rem" />
+        <div v-else>
+          <div v-if="detail.result_status === 0">请将二维码给彩超老师填写结果</div>
+          <div v-if="detail.result_status === 1">请将二维码给专家填写建议</div>
+          <div v-if="detail.result_status === 2">报告已完成，请联系业务经理打印</div>
+          <van-button v-if="detail.result_status !== 2" round type="info" @click="getDetail" style="margin: 0.5rem 0">
+            刷新
+          </van-button>
+        </div>
+      </div>
+
+      <div v-else style="text-align: center; margin: 1rem 0">
+        <div v-if="detail.active_status === 0">活动未开始</div>
+        <div v-if="detail.active_status === 2">活动已结束</div>
+      </div>
     </div>
 
-    <div v-else style="text-align: center; margin: 1rem 0" >
-      <div v-if="detail.active_status === 0">活动未开始</div>
-      <div v-if="detail.active_status === 2">活动已结束</div>
-    </div>
+    <div v-if="detail.status === 0">报名成功，待企业管理员审核</div>
   </div>
 </template>
 

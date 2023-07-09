@@ -30,14 +30,14 @@
         <van-cell :icon="require('@/assets/img/47.png')" title="添加卡包" is-link value to="/add_card" />
         <van-cell
           v-if="isExpire"
-          :icon="require('@/assets/img/48.png')"
+          :icon="require('@/assets/img/79.png')"
           title="报告查询"
           is-link
           value
           to="/expert_list"
         />
-        <van-cell :icon="require('@/assets/img/48.png')" title="服务协议" is-link value to="/agreement?id=1" />
-        <van-cell :icon="require('@/assets/img/48.png')" title="隐私政策" is-link value to="/agreement?id=2" />
+        <van-cell :icon="require('@/assets/img/80.png')" title="服务协议" is-link value to="/agreement?id=1" />
+        <van-cell :icon="require('@/assets/img/81.png')" title="隐私政策" is-link value to="/agreement?id=2" />
         <van-cell :icon="require('@/assets/img/49.png')" title="联系我们" is-link value to="/contact" />
         <!-- <van-cell :icon="require('@/assets/img/50.png')" title="关于我们" is-link value /> -->
       </div>

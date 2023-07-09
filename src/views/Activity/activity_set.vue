@@ -148,6 +148,8 @@
       <van-button round type="info" @click="add">提交</van-button>
     </div>
 
+    <div style="color: #666;background: #fff;padding: 0.5rem 6% 1.6rem 6%">提交后可再次识别活动二维码查看报名详情，活动结束后关注“民济时代”公众号查看检查报告。</div>
+
     <!-- 时间 -->
     <van-action-sheet v-model="show_time">
       <div class="content">
@@ -209,6 +211,7 @@ export default {
   methods: {
     async getDetail() {
       const res = await report_my({ params: { active_id: this.$route.query.active_id || 1 } });
+
       if (res.data.data && res.data.data.id) {
         this.$router.push("/activity_show?active_id=" + this.$route.query.active_id || 1);
         return;
@@ -457,7 +460,7 @@ export default {
 .add_btn {
   display: flex;
   justify-content: center;
-  padding: 1.6rem 0;
+  padding-top: 1.6rem;
   background: #fff;
 }
 

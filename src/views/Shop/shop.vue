@@ -243,6 +243,7 @@ export default {
   z-index: 99;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .swiper_box {

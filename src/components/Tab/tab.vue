@@ -34,8 +34,8 @@ export default {
         {
           active: require("@/assets/img/14.png"),
           inactive: require("@/assets/img/13.png"),
-          title: "健康心理",
-          link: "/psychology"
+          title: "健康商城",
+          link: "/shop"
         },
         {
           active: require("@/assets/img/16.png"),
