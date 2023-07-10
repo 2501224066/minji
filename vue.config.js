@@ -11,7 +11,7 @@ module.exports = {
         changeOrigin: true
       }
     },
-    port: 8080
+    port: 8000
   },
   assetsDir: 'static',
   parallel: false,

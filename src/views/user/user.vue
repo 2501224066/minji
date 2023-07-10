@@ -3,20 +3,20 @@
     <div class="message_box">
       <div class="user_header">
         <span>头像</span>
-        <img :src="head_img_url" alt="" class="user_img" />
+        <van-uploader :after-read="afterRead">
+          <img v-if="head_img_url" :src="head_img_url" alt="" class="user_img" />
+        </van-uploader>
       </div>
       <div class="user_header">
         <span>用户姓名</span>
-        <span>{{ nnickname }}</span>
+        <input type="text" v-model="nnickname" style="border: none;flex:1;text-align: right;" />
       </div>
 
-      <!--
-      <van-cell title="生日" is-link :value="birthday_data" @click="birthday" />
-      -->
-
+      <van-cell style="color:#969799" is-link title="生日" :value="birthday_data" @click="birthday"></van-cell>
+      
       <div class="user_header">
         <span>手机号</span>
-        <span>{{ mobile }}</span> 
+        <span>{{ mobile }}</span>
       </div>
     </div>
 
@@ -36,9 +36,10 @@
     <span class="qd_btn" @click="go_main">确定</span>
   </div>
 </template>
-  
+
 <script>
 import { get_user } from "@/Api/user/user";
+import { upload, userEdit } from "@/Api/activity/index";
 
 export default {
   props: {},
@@ -52,13 +53,18 @@ export default {
       birthday_data: "",
       head_img_url: "",
       nnickname: "",
-      mobile: ""
+      mobile: "",
     };
   },
   created() {
     this.get_user();
   },
   methods: {
+    async afterRead(file) {
+      let res = await upload({ head_img_url: file.content });
+      this.head_img_url = res.data.data.path;
+    },
+
     birthday() {
       this.show = true;
     },
@@ -99,11 +105,15 @@ export default {
       this.nnickname = res.data.nnickname;
       this.mobile = res.data.mobile;
       this.birthday_data = res.data.birthday;
-      console.log(res);
     },
 
-    go_main() {
-      this.$router.back(-1);
+    async go_main() {
+      await userEdit({
+        nickname: this.nnickname,
+        head_img_url: this.head_img_url,
+        birthday: this.birthday_data,
+      });
+      this.$toast("操作成功");
     },
   },
   filters: {
@@ -116,8 +126,8 @@ export default {
   },
 };
 </script>
-  
-<style lang = "less" scoped>
+
+<style lang="less" scoped>
 .user_box {
   width: 100%;
   height: 100%;

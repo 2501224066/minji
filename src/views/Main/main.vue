@@ -28,8 +28,7 @@
         <van-cell :icon="require('@/assets/img/46.png')" title="会员信息" is-link value to="/user" />
         <van-cell :icon="require('@/assets/img/48.png')" title="医生订单" is-link value to="/doctor_order" />
         <van-cell :icon="require('@/assets/img/47.png')" title="添加卡包" is-link value to="/add_card" />
-        <van-cell
-          v-if="isExpire"
+        <van-cell     
           :icon="require('@/assets/img/79.png')"
           title="报告查询"
           is-link
@@ -50,30 +49,22 @@
 
 <script>
 import { get_info } from "@/Api/main/user_info";
-import { is_expire } from "@/Api/activity/index";
 
 export default {
   props: {},
   components: {},
   data() {
     return {
-      info: {},
-      isExpire: false,
+      info: {}
     };
   },
   created() {
     this.get_info();
-    this.getIsExpire();
     if (this.$router.history.current.fullPath == "/main") {
       this.$store.commit("changeActive", 3);
     }
   },
   methods: {
-    async getIsExpire() {
-      let res = await is_expire();
-      this.isExpire = res.data.data.is_expire;
-    },
-    
     go_card() {
       this.$router.push("/card");
     },

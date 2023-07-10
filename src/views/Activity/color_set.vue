@@ -302,7 +302,7 @@
 </template>
 
 <script>
-import { color_doppler_set, report_info } from "@/Api/activity/index";
+import { color_doppler_set, report_info, is_expire } from "@/Api/activity/index";
 import Vue from "vue";
 import vueEsign from "vue-esign";
 Vue.use(vueEsign);
@@ -355,9 +355,21 @@ export default {
     };
   },
   created() {
+    this.getIsExpire();
     this.getDetail();
   },
   methods: {
+    async getIsExpire() {
+      let res = await is_expire();
+      if (!res) {
+        this.$toast.loading({
+          message: "非专家无编辑权限",
+          forbidClick: true,
+          duration: 0,
+        });
+      }
+    },
+
     async getDetail() {
       const res = await report_info({ report_id: this.$route.query.report_id || 1 });
       this.info = res.data.data;
