@@ -288,7 +288,15 @@ const routes = [{
     title: "报告详情"
   },
   component: () => import('@/views/Activity/expert_show.vue')
-}
+},
+{
+  path: '/promotion',
+  name: 'promotion',
+  meta: {
+    title: "我的推广"
+  },
+  component: () => import('@/views/Promotion/index.vue')
+},
 ]
 
 const router = new VueRouter({

@@ -28,15 +28,11 @@
         <van-cell :icon="require('@/assets/img/46.png')" title="会员信息" is-link value to="/user" />
         <van-cell :icon="require('@/assets/img/48.png')" title="医生订单" is-link value to="/doctor_order" />
         <van-cell :icon="require('@/assets/img/47.png')" title="添加卡包" is-link value to="/add_card" />
-        <van-cell     
-          :icon="require('@/assets/img/79.png')"
-          title="报告查询"
-          is-link
-          value
-          to="/expert_list"
-        />
-        <van-cell :icon="require('@/assets/img/80.png')" title="服务协议" is-link value to="/agreement?id=1" />
-        <van-cell :icon="require('@/assets/img/81.png')" title="隐私政策" is-link value to="/agreement?id=2" />
+        <van-cell :icon="require('@/assets/img/81.png')" title="报告查询" is-link value to="/expert_list" />
+        <van-cell :icon="require('@/assets/img/82.png')" title="服务协议" is-link value to="/agreement?id=1" />
+        <van-cell :icon="require('@/assets/img/83.png')" title="隐私政策" is-link value to="/agreement?id=2" />
+        <van-cell :icon="require('@/assets/img/84.png')" title="我要代理" is-link value to="/promotion" />
+        <van-cell :icon="require('@/assets/img/85.png')" title="分配卡片" is-link value to="/agreement?id=1" />
         <van-cell :icon="require('@/assets/img/49.png')" title="联系我们" is-link value to="/contact" />
         <!-- <van-cell :icon="require('@/assets/img/50.png')" title="关于我们" is-link value /> -->
       </div>
@@ -55,7 +51,7 @@ export default {
   components: {},
   data() {
     return {
-      info: {}
+      info: {},
     };
   },
   created() {

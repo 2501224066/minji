@@ -51,3 +51,7 @@ export const upload = function (data) {
 export const userEdit = function (data) {
   return request.post('/api/user/edit', data)
 }
+
+export const agentUser = function (data) {
+  return request.post('/api/agent/user', data)
+}
