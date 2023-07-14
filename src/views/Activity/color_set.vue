@@ -355,13 +355,12 @@ export default {
     };
   },
   created() {
-    this.getIsExpire();
     this.getDetail();
   },
   methods: {
     async getIsExpire() {
       let res = await is_expire();
-      if (!res) {
+      if (!res.data.data.is_expire) {
         this.$toast.loading({
           message: "非专家无编辑权限",
           forbidClick: true,
@@ -373,7 +372,12 @@ export default {
     async getDetail() {
       const res = await report_info({ report_id: this.$route.query.report_id || 1 });
       this.info = res.data.data;
-      if (this.info.audit_sign) this.show = true;
+      if (this.info.audit_sign) {
+        this.show = true;
+        return;
+      }
+
+      await this.getIsExpire();
     },
 
     handleReset() {

@@ -93,7 +93,7 @@
       </div>
     </div>
 
-    <div v-if="detail.status === 0">报名成功，待企业管理员审核</div>
+    <div v-if="detail.status === 0" style="text-align: center; margin: 1rem 0">报名成功，待企业管理员审核</div>
   </div>
 </template>
 
