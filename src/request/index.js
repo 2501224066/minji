@@ -55,9 +55,9 @@ request.interceptors.response.use(
   (error) => {
     if (error.response.status == 401 || error.response.status == 500) {
       localStorage.removeItem("token");
-      window.location.href =
-        "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx13ab299182632eee&redirect_uri=https://www.minjisd.com/wechat/wxback&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect&superior_id" +
-        GetQueryString("superior_id");
+      window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx13ab299182632eee&redirect_uri=https://www.minjisd.com/wechat/wxback&superior_id=${GetQueryString(
+        "superior_id"
+      )}&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect&`;
     }
     endLoading();
     return error.response;
