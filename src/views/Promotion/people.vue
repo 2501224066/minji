@@ -1,6 +1,8 @@
 <template>
   <div class="people">
-    <div style="background: #51aff6; display: flex; justify-content: space-between; align-items: center; padding: 0.5rem">
+    <div
+      style="background: #51aff6; display: flex; justify-content: space-between; align-items: center; padding: 0.5rem"
+    >
       <div style="display: flex; flex-direction: column; justify-content: center; color: #fff">
         <div>推广人数</div>
         <div>
@@ -11,7 +13,7 @@
       <div style="width: 1.5rem"><img src="../../assets/img/b2.png" style="width: 100%" /></div>
     </div>
 
-    <van-tabs v-model="level" @click="getList()">
+    <van-tabs v-model="level" @click="getList(true)">
       <van-tab title="一级" name="1"></van-tab>
       <van-tab title="二级" name="2"></van-tab>
     </van-tabs>
@@ -41,18 +43,21 @@
           style="width: 60%; border: none; padding: 0.2rem; background: #f5f5f5; text-align: center"
           placeholder="会员名称"
         />
-        <div style="flex: 1; text-align: center; padding: 0.2rem; background: #51aff6; color: #fff" @click="getList()">
+        <div
+          style="flex: 1; text-align: center; padding: 0.2rem; background: #51aff6; color: #fff"
+          @click="getList(true)"
+        >
           搜索
         </div>
       </div>
-      <div @click="(balanceOrder = balanceOrder === 0 ? 1 : 0), getList()">
-        推广金额
-        <van-icon v-if="balanceOrder === 0" name="arrow-up" />
+      <div @click="(spreadCount = spreadCount === 0 ? 1 : 0), getList(true)">
+        团队排序
+        <van-icon v-if="spreadCount === 0" name="arrow-up" />
         <van-icon v-else name="arrow-down" />
       </div>
-      <div @click="(spreadCount = spreadCount === 0 ? 1 : 0), getList()">
-        推广人数
-        <van-icon v-if="spreadCount === 0" name="arrow-up" />
+      <div @click="(balanceOrder = balanceOrder === 0 ? 1 : 0), getList(true)">
+        金额排序
+        <van-icon v-if="balanceOrder === 0" name="arrow-up" />
         <van-icon v-else name="arrow-down" />
       </div>
     </div>
@@ -113,7 +118,8 @@ export default {
       this.detail = res.data.data;
     },
 
-    async getList() {
+    async getList(reset) {
+      if (reset) this.list = [];
       const res = await agentSpread({
         params: {
           page: this.page,

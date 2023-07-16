@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="tx"><span  @click="go('/promotion_tx')">立即体现</span></div>
+    <div class="tx"><span  @click="go('/promotion_tx')">立即提现</span></div>
 
     <div class="box">
       <div @click="go('/promotion_qr')"><img src="../../assets/img/p1.jpg" /> <span>推广名片</span></div>

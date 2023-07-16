@@ -31,8 +31,22 @@
         <van-cell :icon="require('@/assets/img/81.png')" title="报告查询" is-link value to="/expert_list" />
         <van-cell :icon="require('@/assets/img/82.png')" title="服务协议" is-link value to="/agreement?id=1" />
         <van-cell :icon="require('@/assets/img/83.png')" title="隐私政策" is-link value to="/agreement?id=2" />
-        <van-cell :icon="require('@/assets/img/84.png')" title="我要代理" is-link value to="/promotion" />
-        <van-cell :icon="require('@/assets/img/85.png')" title="分配卡片" is-link value to="/promotion_zy" />
+        <van-cell
+          v-if="qx.is_agent"
+          :icon="require('@/assets/img/84.png')"
+          title="我要代理"
+          is-link
+          value
+          to="/promotion"
+        />
+        <van-cell
+          v-if="qx.is_assign_permissions"
+          :icon="require('@/assets/img/85.png')"
+          title="分配卡片"
+          is-link
+          value
+          to="/promotion_zy"
+        />
         <van-cell :icon="require('@/assets/img/49.png')" title="联系我们" is-link value to="/contact" />
         <!-- <van-cell :icon="require('@/assets/img/50.png')" title="关于我们" is-link value /> -->
       </div>
@@ -45,6 +59,7 @@
 
 <script>
 import { get_info } from "@/Api/main/user_info";
+import { is_expire } from "@/Api/activity/index";
 
 export default {
   props: {},
@@ -52,15 +67,22 @@ export default {
   data() {
     return {
       info: {},
+      qx: 0,
     };
   },
   created() {
     this.get_info();
+    this.getIsExpire();
     if (this.$router.history.current.fullPath == "/main") {
       this.$store.commit("changeActive", 3);
     }
   },
   methods: {
+    async getIsExpire() {
+      let res = await is_expire();
+      this.qx = res.data.data;
+    },
+
     go_card() {
       this.$router.push("/card");
     },

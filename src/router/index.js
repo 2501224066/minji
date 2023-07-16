@@ -351,11 +351,22 @@ router.beforeEach((to, from, next) => {
     } else {
       localStorage.setItem("wxRedirectUrl", to.path);
       window.location.href =
-        "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx13ab299182632eee&redirect_uri=https://www.minjisd.com/wechat/wxback&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+        "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx13ab299182632eee&redirect_uri=https://www.minjisd.com/wechat/wxback&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect&superior_id" +
+        GetQueryString('superior_id');
     }
   } else {
     next();
   }
 });
+
+function GetQueryString(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = window.location.search.substr(1).match(reg); //获取url中"?"符后的字符串并正则匹配
+  var context = "";
+  if (r != null) context = decodeURIComponent(r[2]);
+  reg = null;
+  r = null;
+  return context == null || context == "" || context == "undefined" ? "" : context;
+}
 
 export default router;
