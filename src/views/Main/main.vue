@@ -32,7 +32,7 @@
         <van-cell :icon="require('@/assets/img/82.png')" title="服务协议" is-link value to="/agreement?id=1" />
         <van-cell :icon="require('@/assets/img/83.png')" title="隐私政策" is-link value to="/agreement?id=2" />
         <van-cell :icon="require('@/assets/img/84.png')" title="我要代理" is-link value to="/promotion" />
-        <van-cell :icon="require('@/assets/img/85.png')" title="分配卡片" is-link value to="/agreement?id=1" />
+        <van-cell :icon="require('@/assets/img/85.png')" title="分配卡片" is-link value to="/promotion_zy" />
         <van-cell :icon="require('@/assets/img/49.png')" title="联系我们" is-link value to="/contact" />
         <!-- <van-cell :icon="require('@/assets/img/50.png')" title="关于我们" is-link value /> -->
       </div>

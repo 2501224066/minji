@@ -55,3 +55,39 @@ export const userEdit = function (data) {
 export const agentUser = function (data) {
   return request.post('/api/agent/user', data)
 }
+
+export const agentHaibao = function (data) {
+  return request.get('/api/agent/haibao', data)
+}
+
+export const agentSpread = function (data) {
+  return request.get('/api/agent/spread', data)
+}
+
+export const agentSpreadOrder = function (data) {
+  return request.get('/api/agent/spread_order', data)
+}
+
+export const agentCommission = function (data) {
+  return request.get('/api/agent/commission', data)
+}
+
+export const agentTx = function (data) {
+  return request.post('/api/agent/withdrawal_apply', data)
+}
+
+export const agentTxLog = function (data) {
+  return request.get('/api/agent/withdrawal_records', data)
+}
+
+export const cardGifts = function (data) {
+  return request.post('/api/card/gifts', data)
+}
+
+export const cardGiftsLog = function (data) {
+  return request.get('/api/card/gifts_log', data)
+}
+
+export const cardList = function (data) {
+  return request.get('/api/card/goods_list', data)
+}

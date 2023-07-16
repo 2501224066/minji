@@ -3,7 +3,6 @@
     <div class="top">
       <img v-if="head_img_url" :src="head_img_url" />
       <span style="font-size: 0.4rem">{{ nnickname }}</span>
-      <div><span class="dj">分销等级</span></div>
       <div style="font-size: 0.8rem">{{ detail.total_commission }}</div>
       <div class="num">
         <div>
@@ -15,19 +14,15 @@
           <div>{{ detail.withdrawal_total }}</div>
         </div>
       </div>
-
-      <div class="sq">代理商申请</div>
     </div>
 
-    <div class="tx"><span>立即体现</span></div>
+    <div class="tx"><span  @click="go('/promotion_tx')">立即体现</span></div>
 
     <div class="box">
-      <div><img src="../../assets/img/p1.jpg" /> <span>推广名片</span></div>
-      <div><img src="../../assets/img/p2.jpg" /> <span>推广人统计</span></div>
-      <div><img src="../../assets/img/p3.jpg" /> <span>佣金明细</span></div>
-      <div><img src="../../assets/img/p4.jpg" /> <span>推广人订单</span></div>
-      <div><img src="../../assets/img/p5.jpg" /> <span>推广人排行</span></div>
-      <div><img src="../../assets/img/p6.jpg" /> <span>佣金排行</span></div>
+      <div @click="go('/promotion_qr')"><img src="../../assets/img/p1.jpg" /> <span>推广名片</span></div>
+      <div @click="go('/promotion_people')"><img src="../../assets/img/p2.jpg" /> <span>推广人统计</span></div>
+      <div @click="go('/promotion_money')"><img src="../../assets/img/p3.jpg" /> <span>佣金明细</span></div>
+      <div @click="go('/promotion_order')"><img src="../../assets/img/p4.jpg" /> <span>推广人订单</span></div>
     </div>
   </div>
 </template>
@@ -63,6 +58,10 @@ export default {
     async getData() {
       const res = await agentUser();
       this.detail = res.data.data;
+    },
+
+    go(url) {
+      this.$router.push(url);
     },
   },
 };
@@ -104,15 +103,6 @@ export default {
       display: flex;
       justify-content: space-between;
       font-size: 0.3rem;
-    }
-    .sq {
-      position: absolute;
-      right: 0;
-      top: 1rem;
-      background: rgb(255, 241, 222);
-      color: rgb(255, 159, 25);
-      padding: 0.1rem 0.2rem;
-      border-radius: 0.5rem 0 0 0.5rem;
     }
   }
   .tx {
