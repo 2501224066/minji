@@ -1,8 +1,6 @@
 <template>
   <div class="people">
-    <div
-      style="background: #51aff6; display: flex; justify-content: space-between; align-items: center; padding: 0.5rem"
-    >
+    <div style="background: #51aff6; display: flex; justify-content: space-between; align-items: center; padding: 0.5rem">
       <div style="display: flex; flex-direction: column; justify-content: center; color: #fff">
         <div>推广人数</div>
         <div>
@@ -28,27 +26,13 @@
         padding: 0.2rem;
       "
     >
-      <div
-        style="
-          width: 45%;
-          display: flex;
-          align-items: center;
-          background: #f5f5f5;
-          border-radius: 1rem;
-          overflow: hidden;
-        "
-      >
+      <div style="width: 45%; display: flex; align-items: center; background: #f5f5f5; border-radius: 1rem; overflow: hidden">
         <input
           v-model="keyword"
           style="width: 60%; border: none; padding: 0.2rem; background: #f5f5f5; text-align: center"
           placeholder="会员名称"
         />
-        <div
-          style="flex: 1; text-align: center; padding: 0.2rem; background: #51aff6; color: #fff"
-          @click="getList(true)"
-        >
-          搜索
-        </div>
+        <div style="flex: 1; text-align: center; padding: 0.2rem; background: #51aff6; color: #fff" @click="getList(true)">搜索</div>
       </div>
       <div @click="(spreadCount = spreadCount === 0 ? 1 : 0), getList(true)">
         团队排序
@@ -65,13 +49,7 @@
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <div style="background: #fff">
         <div
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.2rem 0.8rem;
-            border-top: 1px solid #f0f4f7;
-          "
+          style="display: flex; justify-content: space-between; align-items: center; padding: 0.2rem 0.8rem; border-top: 1px solid #f0f4f7"
           v-for="(item, index) in list"
           :key="index"
         >
@@ -125,7 +103,8 @@ export default {
           page: this.page,
           level: this.level,
           keyword: this.keyword,
-          order: encodeURIComponent(`{balanceOrder: ${this.balanceOrder},spreadCount:${this.spreadCount}}`),
+          balanceOrder: this.balanceOrder,
+          spreadCount: this.spreadCount,
         },
       });
       this.list = this.list.concat(res.data.data.list);
