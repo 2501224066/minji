@@ -34,15 +34,17 @@
         />
         <div style="flex: 1; text-align: center; padding: 0.2rem; background: #51aff6; color: #fff" @click="getList(true)">搜索</div>
       </div>
-      <div @click="(spreadCount = spreadCount === 0 ? 1 : 0), getList(true)">
+      <div @click="(spreadCount = spreadCount === null ? 0 : spreadCount === 0 ? 1 : null), (balanceOrder = null), getList(true)">
         团队排序
+        <van-icon v-if="spreadCount === null" name="minus" />
         <van-icon v-if="spreadCount === 0" name="arrow-up" />
-        <van-icon v-else name="arrow-down" />
+        <van-icon v-if="spreadCount === 1" name="arrow-down" />
       </div>
-      <div @click="(balanceOrder = balanceOrder === 0 ? 1 : 0), getList(true)">
+      <div @click="(balanceOrder = balanceOrder === null ? 0 : balanceOrder === 0 ? 1 : null), (spreadCount = null), getList(true)">
         金额排序
+        <van-icon v-if="balanceOrder === null" name="minus" />
         <van-icon v-if="balanceOrder === 0" name="arrow-up" />
-        <van-icon v-else name="arrow-down" />
+        <van-icon v-if="balanceOrder === 1" name="arrow-down" />
       </div>
     </div>
 
@@ -79,8 +81,8 @@ export default {
       list: [],
       level: "1",
       keyword: null,
-      balanceOrder: 0,
-      spreadCount: 0,
+      balanceOrder: null,
+      spreadCount: null,
       finished: false,
       loading: true,
       total: 0,

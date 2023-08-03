@@ -16,13 +16,13 @@
         </div>
         <div @click="money = detail.balance">全部提现</div>
       </div>
-      <div style="color: #999; margin: 0.2rem 0 1rem 0">当前最多体现{{ detail.balance }}元</div>
+      <div style="color: #999; margin: 0.2rem 0 1rem 0">当前最多提现{{ detail.balance }}元</div>
       <div style="text-align: center">
         <span
           style="padding: 0.3rem 1rem; background: #1daefd; border-radius: 1rem; display: inline-block; color: #fff"
           @click="tx()"
         >
-          立即体现
+          立即提现
         </span>
       </div>
     </div>
