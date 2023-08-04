@@ -44,7 +44,7 @@ export default {
   width: 100%;
   height: 100%;
   background: #eff4f5;
-  position: relative;
+  position: absolute;
 }
 
 .title_img {

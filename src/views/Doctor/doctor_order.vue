@@ -177,7 +177,7 @@ export default {
 .doctor_order{
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     padding-bottom: 50px;
     background: #eff4f5;
     padding-bottom: 50px;

@@ -5,7 +5,7 @@
         <van-image style="width: 100%" :src="item" />
       </van-swipe-item>
     </van-swipe>
-    <div style="color: #999;text-align: center">长按保存图片</div>
+    <div style="color: #999;text-align: center">新用户仅能通过推广码成为下一级推广人</div>
   </div>
 </template>
 

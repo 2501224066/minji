@@ -67,7 +67,7 @@ export default {
   width: 100%;
   height: auto;
   background: #ecf8f6;
-  position: relative;
+  position: absolute;
   z-index: 2000;
   overflow-y: scroll;
   overflow-x: hidden;

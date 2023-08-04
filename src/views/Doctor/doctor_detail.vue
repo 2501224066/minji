@@ -388,7 +388,7 @@ export default {
   width: 96%;
   height: 100%;
   background: #ecf8f6;
-  position: relative;
+  position: absolute;
   z-index: 999;
   padding: 0 2%;
   overflow: auto;

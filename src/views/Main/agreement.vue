@@ -255,7 +255,7 @@ export default {
 .agreement_box {
   width: 90%;
   height: 100%;
-  position: relative;
+  position: absolute;
   background: #f5f7f9;
   z-index: 99;
   padding: 0 5%;

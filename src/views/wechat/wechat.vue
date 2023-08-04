@@ -43,7 +43,7 @@ export default {
     width: 100%;
     height: 100%;
     background: #ecf8f6;
-    position: relative;
+    position: absolute;
     z-index: 99;
 }
 

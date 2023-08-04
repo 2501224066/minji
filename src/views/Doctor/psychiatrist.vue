@@ -428,7 +428,7 @@ export default {
   padding-bottom: 2.1333rem;
   z-index: 99;
   background: #eff4f5;
-  position: relative;
+  position: absolute;
 }
 
 /deep/.van-sidebar-item--select::before {

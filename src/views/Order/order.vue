@@ -419,7 +419,7 @@ export default {
   height: 100%;
   overflow: auto;
   background: #eff4f5;
-  position: relative;
+  position: absolute;
   z-index: 99;
 }
 

@@ -184,7 +184,7 @@ export default {
 .add_address {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     z-index: 99;
     background: #eff5f5;
 

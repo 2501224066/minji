@@ -187,7 +187,7 @@ export default {
 .headlth_list {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   overflow: auto;
   background: #eff4f5;
   z-index: 99;
