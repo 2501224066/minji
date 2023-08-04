@@ -3,7 +3,7 @@
     <div class="top">
       <img v-if="head_img_url" :src="head_img_url" />
       <span style="font-size: 0.4rem">{{ nnickname }}</span>
-      <div style="font-size: 0.8rem">{{ detail.total_commission }}</div>
+      <div style="font-size: 0.8rem">{{ detail.balance }}</div>
       <div class="num">
         <div>
           <div>昨日收益</div>

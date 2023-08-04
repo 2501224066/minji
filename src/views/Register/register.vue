@@ -112,7 +112,7 @@ export default {
 .register {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   background: #fbfffc;
   z-index: 99;
 }

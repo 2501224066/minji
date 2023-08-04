@@ -75,9 +75,9 @@ export default {
         this.$toast("提现金额超出余额");
         return;
       }
-      await agentTx({ money: this.money });
+      let res = await agentTx({ money: this.money });
       if (res.data.code === 200) {
-        this.$toast("提现成功");
+        this.$toast("已提交提现申请");
         this.money = "";
         this.getData();
         this.getList();
