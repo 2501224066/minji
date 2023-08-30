@@ -337,6 +337,14 @@ const routes = [
     },
     component: () => import("@/views/Promotion/zy.vue"),
   },
+  {
+    path: "/promotion_readme",
+    name: "promotion_readme",
+    meta: {
+      title: "分销协议",
+    },
+    component: () => import("@/views/Promotion/readme.vue"),
+  },
 ];
 
 const router = new VueRouter({

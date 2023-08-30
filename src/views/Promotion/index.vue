@@ -16,13 +16,15 @@
       </div>
     </div>
 
-    <div class="tx"><span  @click="go('/promotion_tx')">立即提现</span></div>
+    <div class="tx"><span @click="go('/promotion_tx')">立即提现</span></div>
 
     <div class="box">
-      <div @click="go('/promotion_qr')"><img src="../../assets/img/p1.jpg" /> <span>推广名片</span></div>
-      <div @click="go('/promotion_people')"><img src="../../assets/img/p2.jpg" /> <span>推广人统计</span></div>
-      <div @click="go('/promotion_money')"><img src="../../assets/img/p3.jpg" /> <span>佣金明细</span></div>
-      <div @click="go('/promotion_order')"><img src="../../assets/img/p4.jpg" /> <span>推广人订单</span></div>
+      <div @click="go('/promotion_qr')"><img src="@/assets/img/p1.jpg" /> <span>推广名片</span></div>
+      <div @click="go('/promotion_people')"><img src="@/assets/img/p2.jpg" /> <span>推广人统计</span></div>
+      <div @click="go('/promotion_money')"><img src="@/assets/img/p3.jpg" /> <span>佣金明细</span></div>
+      <div @click="go('/promotion_order')"><img src="@/assets/img/p4.jpg" /> <span>推广人订单</span></div>
+      <div @click="go('/promotion_readme')"><img src="@/assets/img/p5.png" /> <span>分销协议</span></div>
+      <div></div>
     </div>
   </div>
 </template>
